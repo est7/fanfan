@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../generated/l10n.dart';
 
@@ -43,25 +44,34 @@ class IndexPage extends HookConsumerWidget {
                 selectedIndex: tabsRouter.activeIndex,
                 tabs: [
                   GButton(
-                    icon: LineIcons.home,
+                    icon: PhosphorIcons.house,
                     text: S.of(context).tab_home,
                   ),
                   GButton(
-                    icon: LineIcons.at,
+                    icon: PhosphorIcons.at,
                     text: S.of(context).tab_atme,
                   ),
                   GButton(
-                    icon: LineIcons.mailBulk,
+                    icon: PhosphorIcons.envelope,
                     text: S.of(context).tab_message,
                   ),
                   GButton(
-                    icon: LineIcons.user,
+                    icon: PhosphorIcons.user,
                     text: S.of(context).tab_mine,
                   )
                 ]),
           ),
         );
       },
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Add your onPressed code here!
+          },
+          child: const Icon(PhosphorIcons.paperPlaneTilt),
+          backgroundColor: Colors.green,
+        ),
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
     );
   }
 }

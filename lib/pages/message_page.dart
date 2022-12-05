@@ -3,12 +3,17 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter/material.dart';
 import '../views/appbar.dart';
 
+final counterProvider = StateNotifierProvider((_) => CounterNotifier(0));
 
+class CounterNotifier extends StateNotifier<int> {
+  CounterNotifier(int initialState) : super(initialState);
+
+  void increment() => state++;
+}
 
 class MessagePage extends HookConsumerWidget {
   const MessagePage({super.key});
 
-  // ArticlePage({Key? key, required this.rss}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
@@ -19,7 +24,9 @@ class MessagePage extends HookConsumerWidget {
   }
 
   _buildBody(WidgetRef ref) {
-    // final state = ref.watch(rssConfigProvider);
-    return const Text('AtmePage');
+    return Consumer(builder: (context, ref, child) {
+        final counter = watch(counterProvider.state);
+    return Text('Counter: $counter');
+  },);
   }
 }
