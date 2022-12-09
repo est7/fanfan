@@ -24,9 +24,6 @@ class MessagePage extends HookConsumerWidget {
   }
 
   _buildBody(WidgetRef ref) {
-    return Consumer(builder: (context, ref, child) {
-        final counter = watch(counterProvider.state);
-    return Text('Counter: $counter');
-  },);
+    return const Text('MessagePage');
   }
 }
